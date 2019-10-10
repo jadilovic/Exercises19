@@ -23,20 +23,16 @@ public class RadiusServer {
 		DataOutputStream toClient = new DataOutputStream(socket.getOutputStream());
 		
 		// Receiving data from client
-		String receivedData = fromClient.readUTF();
-		System.out.println("Received radius from client: " + receivedData);
-		
-		// Converting data to integer
-		double radius = Double.parseDouble(receivedData);
+		double receivedRadius = fromClient.readDouble();
+		System.out.println("Received radius from client: " + receivedRadius);
 		
 		// Calculating area of circle
-		double circleArea = radius * radius * Math.PI;
+		double circleArea = receivedRadius * receivedRadius * Math.PI;
 		System.out.println("Area of circle to be sent to client" + circleArea);
 		circleArea = Math.round(circleArea);
-		String area = String.valueOf(circleArea);
 		
 		// Sending circle area to the client
-		toClient.writeUTF(area);
+		toClient.writeDouble(circleArea);
 		sSocket.close();
 	}
 

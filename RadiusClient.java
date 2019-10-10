@@ -14,7 +14,7 @@ public class RadiusClient {
 		// Asking user to provide radius to be sent to server
 		System.out.println("Please enter radius of the circle");
 		Scanner input = new Scanner(System.in);
-		String radius = input.nextLine();
+		double radius = input.nextDouble();
 		input.close();
 		
 		// Creating socket for communication with the server
@@ -25,11 +25,11 @@ public class RadiusClient {
 		DataInputStream fromServer = new DataInputStream(socket.getInputStream());
 		
 		// Sending radius to server
-		toServer.writeUTF(radius);
+		toServer.writeDouble(radius);
 		System.out.println("Radius sent to the server: " + radius);
 		
 		// Receiving circle area from the server
-		String circleArea = fromServer.readUTF();
+		double circleArea = fromServer.readDouble();
 		System.out.println("The area of the circle calculated by the server is: " + circleArea);
 		socket.close();
 	}
