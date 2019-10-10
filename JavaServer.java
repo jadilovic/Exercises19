@@ -11,7 +11,7 @@ public class JavaServer {
 	public static void main(String[] args) throws Exception {
 		
 		// Server socket created
-		ServerSocket server = new ServerSocket(1026);
+		ServerSocket server = new ServerSocket(1029);
 		System.out.println("Server socket is activated " + new Date() + " and is waiting");
 		
 		// Upcoming traffic is awaited
@@ -29,7 +29,7 @@ public class JavaServer {
 		// Write and send back sentence to the client
 		outputClient.writeUTF(sentence.toUpperCase());
 		
-		System.out.println("Sentence '" + sentence + "' was sent back to client");
+		System.out.println("Sentence '" + sentence.toUpperCase() + "' was sent back to client");
 		server.close();
 	}
 
