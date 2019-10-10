@@ -26,6 +26,7 @@ public class CountServer {
 					+ "client number is " + count;
 			toClient.writeUTF(mess);
 			//socket = socketS.accept();
+			socketS.close();
 		}
 		socketS.close();
 	}
